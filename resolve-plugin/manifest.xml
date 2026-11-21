@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BlackmagicDesign>
+  <Plugin>
+    <Id>com.framebase.presets</Id>
+    <Name>Framebase Presets</Name>
+    <Version>0.1.0</Version>
+    <Description>Biblioteca de recursos y presets para tu equipo.</Description>
+    <FilePath>main.js</FilePath>
+  </Plugin>
+</BlackmagicDesign>

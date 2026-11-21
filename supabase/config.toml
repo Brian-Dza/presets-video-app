@@ -1,0 +1,7 @@
+project_id = "framebase-presets"
+
+[functions.create-team-invite]
+verify_jwt = false
+
+[functions.accept-team-invite]
+verify_jwt = false

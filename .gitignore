@@ -1,0 +1,9 @@
+node_modules/
+dist/
+release/
+.env
+.env.local
+.DS_Store
+Thumbs.db
+*.log
+resolve-plugin/WorkflowIntegration.node

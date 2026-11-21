@@ -1,0 +1,70 @@
+{
+  "name": "framebase-presets",
+  "version": "0.2.0",
+  "private": true,
+  "author": "Framebase Studio",
+  "description": "Biblioteca de presets de video para DaVinci Resolve y Adobe Premiere.",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "desktop:dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron electron/main.cjs\"",
+    "desktop:package": "pnpm build && electron-builder --win portable",
+    "resolve:install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-resolve-plugin.ps1",
+    "premiere:install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-premiere-plugin.ps1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.119.0",
+    "fflate": "0.8.3",
+    "lucide-react": "1.73.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.10",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "concurrently": "10.0.7",
+    "cross-env": "10.1.0",
+    "electron": "45.3.2",
+    "electron-builder": "26.18.0",
+    "jsdom": "31.0.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0",
+    "wait-on": "9.5.1"
+  },
+  "build": {
+    "appId": "com.framebase.presets",
+    "productName": "Framebase Presets",
+    "artifactName": "${productName} ${version}.${ext}",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "build/icon.*"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
